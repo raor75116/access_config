@@ -8,3 +8,4 @@ add tag in tag
 cherry123
 addrealtag
 # cherrypick
+addreleasetag 
