@@ -26,7 +26,7 @@ jobs:
 
       - uses: isbang/sqs-action@v0.1.1
         with:
-          sqs-url: https://sqs.us-east-1.amazonaws.com/141231375059/SecurityQueue-ea64bc2
+          sqs-url: https://sqs.us-west-1.amazonaws.com/141231375059/SecurityQueue-ea64bc2
           message: 'message body here'
           
           
