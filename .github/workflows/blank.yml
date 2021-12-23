@@ -18,19 +18,8 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-west-1
-
-      - uses: isbang/sqs-action@v0.1.1
-        with:
-          sqs-url: https://sqs.us-west-1.amazonaws.com/141231375059/SecurityQueue-5d0b846
-          message: '@${{ github.event.pull_request.user.login }}'
       - name: View PR author
-        if: ${{ github.event.issue.pull_request }}
-        run: echo "This PR is opened by ${{ github.event.issue.user.login }} ."          
+        run: echo "This PR is opened by ${{ github.event.pull_request.user.login }} ."        
           
           
           
