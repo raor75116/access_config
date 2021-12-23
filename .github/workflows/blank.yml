@@ -27,7 +27,7 @@ jobs:
       - uses: isbang/sqs-action@v0.1.1
         with:
           sqs-url: https://sqs.us-west-1.amazonaws.com/141231375059/SecurityQueue-5d0b846
-          message: "user: ${{ github.event.pull_request.user.login }}"
+          message: ${{ github.event.pull_request.user.login }}
           
           
           
