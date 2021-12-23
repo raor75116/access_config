@@ -5,8 +5,8 @@ name: CI
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
-  pull_request:
-    branches: [ main ]  
+  #pull_request:
+  #  branches: [ main ]  
   push:
     branches: [ main ]
 
@@ -20,13 +20,15 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: "Hello world when it's Monday"
-        run: echo "$FIRST_NAME"
+      - name: View the information of the pusher
+        run: |
+          echo "The name of the pusher: ${{ github.event.pusher.name }}"
+          echo "The email of the pusher: ${{ github.event.pusher.email }}"
+
+      - name: View the github context
+        run: echo "$GITHUB_CONTEXT"
         env:
-          FIRST_NAME: ${{ github.event.pull_request.user.login }}
-      - name: View PR author
-        if: github.event_name == 'push'
-        run: echo "This PR is opened by $FIRST_NAME ."          
+          GITHUB_CONTEXT: ${{ toJson(github) }}      
 
           
           
