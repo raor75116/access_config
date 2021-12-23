@@ -22,13 +22,12 @@ jobs:
     steps:
       - name: View the information of the pusher
         run: |
-          echo "The name of the pusher: ${{ github.event.pusher.name }}"
-          echo "The email of the pusher: ${{ github.event.pusher.email }}"
+          echo "The name of the pusher: ${{ github.event.commits.author.username }}"
 
-      - name: View the github context
-        run: echo "$GITHUB_CONTEXT"
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}      
+     # - name: View the github context
+     #   run: echo "$GITHUB_CONTEXT"
+     #   env:
+     #     GITHUB_CONTEXT: ${{ toJson(github) }}      
 
           
           
