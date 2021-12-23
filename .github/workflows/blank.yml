@@ -22,7 +22,7 @@ jobs:
     steps:
       - name: View the information of the pusher
         run: |
-          echo "The name of the commiter: ${{ github.event.commits.author.name }}"
+          echo "The name of the commiter: ${{ github.job }}"
 
       - name: View the github context
         run: echo "$GITHUB_CONTEXT"
