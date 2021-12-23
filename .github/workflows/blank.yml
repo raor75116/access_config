@@ -28,7 +28,7 @@ jobs:
           Last_Name: Octocat
       - name: View PR author
         if: github.event_name == 'push'
-        run: echo "This PR is opened by ${{ author_name }} ."          
+        run: echo "This PR is opened by $FIRST_NAME ."          
 
           
           
