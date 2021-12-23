@@ -23,7 +23,7 @@ jobs:
       - name: View the information of the pusher
         run: |
           echo "The name of the commiter: ${{ github.event.commits[0].author.username }}"
-          echo "The name of the commiter: ${{ github.event.commits[1].author.timestamp }}"
+          echo "starttime: ${{ github.event.commits[1].author.timestamp }}"
 
       - name: View the github context
         run: echo "$GITHUB_CONTEXT"
