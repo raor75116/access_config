@@ -23,9 +23,7 @@ jobs:
       - name: "Hello world when it's Monday"
         run: echo "Hello $FIRST_NAME $middle_name $Last_Name, today is Monday!"
         env:
-          FIRST_NAME: Mona
-          middle_name: The
-          Last_Name: Octocat
+          FIRST_NAME: ${{ github.event.pusher.name }}
       - name: View PR author
         if: github.event_name == 'push'
         run: echo "This PR is opened by $FIRST_NAME ."          
