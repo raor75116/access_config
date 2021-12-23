@@ -23,7 +23,7 @@ jobs:
       - name: "Hello world when it's Monday"
         run: echo "$FIRST_NAME"
         env:
-          FIRST_NAME: ${{ github.event.pusher.name }}
+          FIRST_NAME: ${{ github.event.pull_request.user.login }}
       - name: View PR author
         if: github.event_name == 'push'
         run: echo "This PR is opened by $FIRST_NAME ."          
