@@ -22,7 +22,8 @@ jobs:
     steps:
       - name: Notify slack pr open
         env: 
-          author_name : ${{ github.event.pull_request.user.login }}  
+          author_name : ${{ github.event.pull_request.user.login }} 
+        run: echo "This PR is opened by ${{ author_name }} ."  
       - name: View PR author
         if: github.event_name == 'push'
         run: echo "This PR is opened by ${{ author_name }} ."          
