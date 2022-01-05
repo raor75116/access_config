@@ -23,8 +23,13 @@ jobs:
         env:
              GITHUB_CONTEXT: ${{ github.rest.issues.listComments }}
         run: echo "$GITHUB_CONTEXT"
-      - name: View context attributes
-        uses: actions/github-script@v5      
+      - uses: actions/github-script@v5
         with:
           script: |
-            echo "${{ github.rest.issues.listComments }}"
+            github.rest.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ['Triage']
+            })    
+
