@@ -20,5 +20,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: View the github context
-        run: echo ${{ github.event.comment.body }}
+        env:
+             BODY: ${{ github.event.comment.body }}
+        run: echo "$BODY"
 
