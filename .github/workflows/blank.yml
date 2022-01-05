@@ -21,6 +21,6 @@ jobs:
     steps:
       - name: View the github context
         env:
-             BODY: ${{ github.event.comment.body }}
-        run: echo "$BODY"
+             GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
 
