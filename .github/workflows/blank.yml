@@ -19,12 +19,17 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: View the github context
-        env:
-             GITHUB_CONTEXT: ${{ github.rest.issues.listComments }}
-        run: echo "$GITHUB_CONTEXT"
-      - uses: actions/github-script@v5
+      - name: Check for ignore comment
+        id: ignore
+        uses: actions/github-script@v5
         with:
           script: |
-           echo "${{github.rest.issues.listComments}}"   
+            const comments = await github.rest.issues.listComments({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+            }).then(({data}) => data)
+            return comments.some(({body}) => body === "/ignore pr-size")
+      - run: |
+          echo "${{ steps.ignore.outputs.result}}" 
 
