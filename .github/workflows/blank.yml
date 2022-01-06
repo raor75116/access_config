@@ -16,6 +16,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_url: context.payload.issue_url,
+              issue_number: context.issue.number,
             })
             console.log(comments)
       - name: View context attributes
