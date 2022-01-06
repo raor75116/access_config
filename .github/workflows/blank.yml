@@ -11,7 +11,15 @@ jobs:
         id: readbody
         with:
           script: |
-            console.log(github.request(context.payload.pull_request.issue_url).data.body)
+            const comments = await github.rest.issues.listComments({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+            }).then(({data}) => data)
+            return comments.some(({body}) => body === "/ignore pr-size")
+      - run: |
+          echo "${{ steps.ignore.outputs.result}}"
+            
 
       - name: Get result
         run: echo "${{steps.readbody.result.data.body}}"
