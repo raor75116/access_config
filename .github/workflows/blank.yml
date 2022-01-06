@@ -10,11 +10,12 @@ jobs:
       - uses: actions/github-script@v5
         id: readbody
         with:
-          script: return |
+          script: |
             const result = await github.request(context.payload.pull_request.issue_url)
             console.log(result.data.body)
+            return "Hello World"
           result-encoding: string
             
 
       - name: Get result
-        run: echo "${{steps.readbody.outputs.result.data.body}}"
+        run: echo "${{steps.readbody.outputs.result}}"
