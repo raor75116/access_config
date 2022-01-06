@@ -8,16 +8,7 @@ on:
 jobs:
   comment:
     runs-on: ubuntu-latest
-    steps:
-      - name: Find Comment
-        uses: peter-evans/find-comment@v1
-        id: fc
-        with:
-          issue-number: ${{ github.event.number }}
-          body-includes: endtime
-      - run: |
-          echo ${{ steps.fc.outputs.comment-id }}
-          echo ${{ steps.fc.outputs.comment-body }}    
+    steps:  
       - uses: actions/github-script@v5
         id: readbody
         with:
@@ -27,6 +18,10 @@ jobs:
             return (result.data.body)
           result-encoding: string
             
+      - name: Conditionally Run
+        if: contains('${{ steps.readbody.outputs.result }}', 'username')
+        run: |
+          echo "username did exist and should run"
 
       - name: Get result
         run: echo "${{steps.readbody.outputs.result}}"
