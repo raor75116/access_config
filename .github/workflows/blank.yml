@@ -26,7 +26,10 @@ jobs:
             cond: contains('${{ steps.readbody.outputs.result }}', 'qwsdsasas')
             if_true: '0'  # string value
             if_false: '1' # string value
-          
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: ${{ steps.fetchDepth.outputs.value }}          
 
       - name: Get result
         run: echo "${{steps.readbody.outputs.result}}"
