@@ -19,9 +19,9 @@ jobs:
           result-encoding: string
             
       - name: Conditionally Run
-        if: contains('${{ steps.readbody.outputs.result }}', 'username')
+        if: contains('${{ steps.readbody.outputs.result }}', 'qwsdsasas')
         run: |
-          echo "username did exist and should run"
+          echo "qwsdsasas did exist and should run"
 
       - name: Get result
         run: echo "${{steps.readbody.outputs.result}}"
