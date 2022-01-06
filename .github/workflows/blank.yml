@@ -18,7 +18,7 @@ jobs:
               issue_url: context.payload.pull_request.issue_url,
               issue_number: context.issue.number,
             })
-            console.log(comments.issue_url.body)
+            console.log(comments)
       - name: View context attributes
         uses: actions/github-script@v5
         with:
