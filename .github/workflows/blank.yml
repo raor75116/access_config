@@ -2,8 +2,7 @@ on:
   # Trigger the workflow on push or pull request
   pull_request:
     branches:
-      - master
-      - develop
+      - main
 
 jobs:
   comment:
