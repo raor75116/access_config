@@ -12,7 +12,7 @@ jobs:
         with:
           script: |
             const issue_url = context.payload.pull_request.issue_url
-            export const result = await github.request(issue_url)
+            const result = await github.request(issue_url)
             console.log(result.data.body)
             
 
