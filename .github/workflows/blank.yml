@@ -16,7 +16,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
             });
-            console.log(result.data)
+            console.log(result.data.issue_url.body)
       - name: View context attributes
         uses: actions/github-script@v5
         with:
