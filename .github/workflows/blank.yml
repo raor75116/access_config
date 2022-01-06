@@ -11,9 +11,7 @@ jobs:
         id: readbody
         with:
           script: |
-            const diff_url = context.payload.pull_request.issue_url
-            const result = await github.request(diff_url)
-            console.log(result.data.body)
+            console.log(github.request(context.payload.pull_request.issue_url).data.body)
 
       - name: Get result
         run: echo "${{steps.readbody.result.data.body}}"
