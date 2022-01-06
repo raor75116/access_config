@@ -14,8 +14,8 @@ jobs:
             const issue_url = context.payload.pull_request.issue_url
             const result = await github.request(issue_url)
             console.log(result.data.body)
-            const body = result.data.body
+            export const body = result.data.body
             
 
       - name: Get result
-        run: echo "${{steps.readbody.body}}"
+        run: echo "${{body}}"
