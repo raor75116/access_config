@@ -8,9 +8,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/github-script@v5
+        id: read-body
         with:
           script: |
             const diff_url = context.payload.pull_request.issue_url
             const result = await github.request(diff_url)
             console.log(result.data.body)
 
+      - name: Get result
+        run: echo "${{steps.read-body}}"
