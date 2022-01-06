@@ -22,4 +22,8 @@ jobs:
       - name: View context attributes
         uses: actions/github-script@v5
         with:
-         script: console.log(context.payload.issue_url)
+         script: console.log(context)
+      - name: $github
+        run:   echo "$GITHUB_CONTEXT"
+        env:
+             GITHUB_CONTEXT: ${{ toJson(github) }}
