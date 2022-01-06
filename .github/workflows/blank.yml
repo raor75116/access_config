@@ -21,6 +21,4 @@ jobs:
     steps:
     - name: $github
       run:   echo "${{github.event.issue.pull_request}}"
-      env:
-       {{github.event.issue.pull_request}}: ${{ toJson(github) }}
 
