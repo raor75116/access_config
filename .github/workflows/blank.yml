@@ -12,10 +12,9 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            // Get the existing comments.
-            const {data: comments} = await github.rest.issues.listComments({
+            const result = github.rest.issues.listComments({
+              issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              issue_number: context.payload.number,
-            })
-            console.log(data)
+            });
+            console.log(result.data)
