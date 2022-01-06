@@ -20,5 +20,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     - name: $github
-      run:   echo "${{github.event.issue.pull_request}}"
+      run:   echo "$GITHUB_CONTEXT"
+      env:
+       GITHUB_CONTEXT: ${{ toJson(github) }}
 
