@@ -12,11 +12,12 @@ jobs:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             const result = await github.rest.issues.listComments({
-              issue_number: context.issue.number,
+              issue_number: context.payload.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
+              body: context.payload.pull_request.issue_url.body
             });
-            console.log(result.data.issue_url.body)
+            console.log(result.body)
       - name: View context attributes
         uses: actions/github-script@v5
         with:
