@@ -7,8 +7,10 @@ jobs:
   comment:
     runs-on: ubuntu-latest
     steps:
-    - name: View context attributes
-      uses: actions/github-script@v5
-      with:
-         script: echo "$context"
+      - uses: actions/github-script@v5
+        with:
+          script: |
+            const diff_url = context.payload.pull_request.issue_url
+            const result = await github.request(diff_url)
+            console.log(result)
 
