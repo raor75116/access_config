@@ -20,7 +20,7 @@ jobs:
           result-encoding: string   
           
       - name: Conditionally Run
-        if: contains(steps.readbody.outputs.result, 'SomeString')
+        if: contains(steps.readbody.outputs.result, 'username')
         run: |
           echo "SomeString did exist and should run"
       
