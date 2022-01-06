@@ -12,13 +12,12 @@ jobs:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             // Get the existing comments.
+            // Get the existing comments.
             const {data: comments} = await github.rest.issues.listComments({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.payload.number,
-              body: context.payload.pull_request.issue_url
             })
-            console.log(comments.body)
       - name: View context attributes
         uses: actions/github-script@v5
         with:
