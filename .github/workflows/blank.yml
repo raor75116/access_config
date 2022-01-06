@@ -22,4 +22,4 @@ jobs:
       - name: View context attributes
         uses: actions/github-script@v5
         with:
-         script: console.log(context)
+         script: console.log(context.payload.issue_url)
