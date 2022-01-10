@@ -2,6 +2,8 @@ on:
   pull_request:
     branches: [main]
     types: [opened, synchronize]
+  issue_comment:
+    branches: [main]  
 jobs:
   comment:
     runs-on: ubuntu-latest
