@@ -12,7 +12,8 @@ jobs:
         with:
           script: |
             const result = await github.request(context.payload.pull_request.issue_url)
-            console.log(result.data.body)
+            const inputs = result.data.body
+            console.log(inputs)
             return (result.data.body)
           result-encoding: string
             
