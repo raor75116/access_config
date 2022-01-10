@@ -17,7 +17,7 @@ jobs:
       - name: read file
         id: set_var
         run: |
-          echo $(ls)
+          ls
             
 
       - name: Get result
