@@ -20,7 +20,7 @@ jobs:
             )
             const prNum = ev.pull_request.number
             console.log(prNum)
-            result-encoding: string
+          result-encoding: string
             
 
       - name: Get result
