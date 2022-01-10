@@ -41,7 +41,7 @@ jobs:
         
       - name: send message
         if: |
-            github.event.pull_request.merged == true
+            github.event.pull_request.merged == true ||
             contains(steps.readbody.outputs.result, 'use') ||
             contains(steps.readbody.outputs.result, 'num')
         uses: isbang/sqs-action@v0.1.1
