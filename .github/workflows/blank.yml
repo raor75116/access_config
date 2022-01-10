@@ -1,11 +1,11 @@
 on:
   pull_request:
     branches: [main]
-
+    types: [opened, synchronize]
 jobs:
   comment:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true
+    ##if: github.event.pull_request.merged == true
     steps:
       - uses: actions/github-script@v5
         id: readbody
@@ -14,11 +14,18 @@ jobs:
             const result = await github.request(context.payload.pull_request.issue_url)
             console.log(result.data.body)
             return (result.data.body)
-          result-encoding: string
+            const fs = require('fs')
+            const ev = JSON.parse(
+              fs.readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8')
+            )
+            const prNum = ev.pull_request.number
+            console.log(prNum)
+            result-encoding: string
             
 
       - name: Get result
         run: echo "${{steps.readbody.outputs.result}}"
+   
 
       - uses: aws-actions/configure-aws-credentials@v1
         with:
