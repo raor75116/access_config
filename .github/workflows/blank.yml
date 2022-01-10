@@ -14,19 +14,14 @@ jobs:
             const result = await github.request(context.payload.pull_request.issue_url)
             console.log(result.data.body)
             return (result.data.body)
-            const fs = require('fs')
-            const ev = JSON.parse(
-              fs.readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8')
-            )
-            const prNum = ev.pull_request.number
-            return(prNum)
           result-encoding: string
             
 
       - name: Get result
-        run: echo "${{steps.readbody.outputs.result}}"      
-   
-
+        run: echo "${{steps.readbody.outputs.result}}"   
+      - name: Get number
+        run: echo "${{github.event.number}}"         
+        
       - uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
