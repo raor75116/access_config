@@ -27,10 +27,9 @@ jobs:
         with:
           issue-number: ${{github.event.number}}
           body-includes: username
+          direction: last
       - run: |
-          echo ${{ steps.fc.outputs.comment-id }}
-          echo ${{ steps.fc.outputs.comment-body }}
-          echo ${{ steps.fc.outputs.comment-author }}        
+          echo ${{ steps.fc.outputs.comment-body }}     
         
       - uses: aws-actions/configure-aws-credentials@v1
         with:
