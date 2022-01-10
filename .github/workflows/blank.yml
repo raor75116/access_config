@@ -41,7 +41,9 @@ jobs:
               core.setFailed('missing username in pr comment')
         
       - name: send message
-        if: contains(steps.readbody.outputs.result, 'use')
+        if: |
+            contains(steps.readbody.outputs.result, 'use') == false ||
+            contains(steps.readbody.outputs.result, 'num') == false
         uses: isbang/sqs-action@v0.1.1
         with:
           sqs-url: https://sqs.us-west-1.amazonaws.com/141231375059/sqslambda
