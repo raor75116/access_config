@@ -32,7 +32,7 @@ jobs:
       #  run: exit 1
         
       - name: validate username 
-        if: ${{contains(steps.readbody.outputs.result, 'use') || contains(steps.readbody.outputs.result, 'num')}} == false
+        if: contains(fromJson('["use", "num"]'), steps.readbody.outputs.result)
         uses: actions/github-script@v3
         with:
           script: |
