@@ -17,8 +17,7 @@ jobs:
       - name: read file
         id: set_var
         run: |
-          JSON=$(cat ./package.json)
-          echo "::set-output name=matrix::${JSON//'%'/'%25'}"
+          ls
             
 
       - name: Get result
