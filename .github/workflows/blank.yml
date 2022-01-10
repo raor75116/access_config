@@ -1,11 +1,12 @@
 on:
   pull_request:
     branches: [main]
-    types: [opened, synchronize]
+    types: [closed]
 
 jobs:
   comment:
     runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
     steps:
       - uses: actions/github-script@v5
         id: readbody
