@@ -35,7 +35,9 @@ jobs:
       #  run: exit 1
         
       - name: validate username 
-        if: contains(fromJson('["use", "num"]'), steps.readbody.outputs.result) == false || !github.event.issue.pull_request
+        if: |
+            github.event_name == 'issue_comment' ||
+            contains(fromJson('["use", "num"]'), steps.readbody.outputs.result) == false
         uses: actions/github-script@v3
         with:
           script: |
