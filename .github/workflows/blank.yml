@@ -5,7 +5,6 @@ on:
 jobs:
   comment:
     runs-on: ubuntu-latest
-    ##if: github.event.pull_request.opened == true
     steps:
       - uses: actions/github-script@v5
         id: readbody
@@ -20,16 +19,16 @@ jobs:
       - name: Get result
         run: echo "${{steps.readbody.outputs.result}}"   
       - name: Get number
-        run: echo "${{github.event.issue.number}}"       
+        run: echo "${{github.event.issue.number}}"     
         
-      - uses: aws-actions/configure-aws-credentials@v1
+      - name: configure aws  
+        if: |
+            github.event.pull_request.merged == true
+        uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-west-1
-      #- name: validate username 
-      #  if: contains(steps.readbody.outputs.result, 'use') == false
-      #  run: exit 1
         
       - name: validate username 
         if: |
@@ -42,6 +41,7 @@ jobs:
         
       - name: send message
         if: |
+            github.event.pull_request.merged == true
             contains(steps.readbody.outputs.result, 'use') ||
             contains(steps.readbody.outputs.result, 'num')
         uses: isbang/sqs-action@v0.1.1
