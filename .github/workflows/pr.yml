@@ -15,18 +15,13 @@ jobs:
             return (result.data.body)
           result-encoding: string
           
-      - name: read
-        uses: actions/github-script@v5
-        id: readfile
+      - name: Read package.json
+        id: package
+        uses: juliangruber/read-file-action@v1
         with:
-          script: |
-            const result = await github.request(context.payload.pull_request.issue_url)            
-            const fs = require('fs')
-            const path = require('path')
-
-            const posts = fs.readdir(
-              path.join(process.env.GITHUB_WORKSPACE, 'test')
-            )
+            path: package.json
+      - name: Echo package.json
+        run: echo "${{ steps.package.outputs.content }}”
             
 
       - name: Get result
