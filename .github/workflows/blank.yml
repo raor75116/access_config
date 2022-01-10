@@ -19,12 +19,12 @@ jobs:
               fs.readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8')
             )
             const prNum = ev.pull_request.number
-            console.log(prNum)
+            return(prNum)
           result-encoding: string
             
 
       - name: Get result
-        run: echo "${{steps.readbody.outputs.result}}"
+        run: echo "${{steps.readbody.outputs.result}}"      
    
 
       - uses: aws-actions/configure-aws-credentials@v1
