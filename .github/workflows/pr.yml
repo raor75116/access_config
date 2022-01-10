@@ -14,10 +14,19 @@ jobs:
             console.log(result.data.body)
             return (result.data.body)
           result-encoding: string
-      - name: read file
-        id: set_var
-        run: |
-          ls
+          
+      - name: read
+        uses: actions/github-script@v5
+        id: readfile
+        with:
+          script: |
+            const result = await github.request(context.payload.pull_request.issue_url)            
+            const fs = require('fs')
+            const path = require('path')
+
+            const posts = fs.readdir(
+              path.join(process.env.GITHUB_WORKSPACE, 'test')
+            )
             
 
       - name: Get result
