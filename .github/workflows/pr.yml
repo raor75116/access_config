@@ -15,12 +15,12 @@ jobs:
             return (result.data.body)
           result-encoding: string
 
-      - name: Read package.json
+      - name: Read pack.json
         id: package
         uses: juliangruber/read-file-action@v1
         with:
-          path: ./package.json
-      - name: Echo package.json
+          path: ./pack.json
+      - name: Echo pack.json
         run: echo "${{ steps.package.outputs.content }}"
             
 
