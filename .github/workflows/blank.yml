@@ -3,7 +3,8 @@ on:
     branches: [main]
     types: [opened, synchronize]
   issue_comment:
-    branches: [main]  
+    branches: [main] 
+    types: [created, edited]
 jobs:
   comment:
     runs-on: ubuntu-latest
