@@ -21,7 +21,7 @@ jobs:
       - name: Get number
         run: echo "${{github.event.issue.number}}"     
         
-      - name: configure aws  
+      - name: ConfigureAws  
         if: |
             github.event.pull_request.merged == true
         uses: aws-actions/configure-aws-credentials@v1
@@ -38,8 +38,8 @@ jobs:
         with:
           script: |
               core.setFailed('missing username in pr comment')
-        
-      - name: send message
+      - name: send message 
+        needs: [ConfigureAws]
         if: |
             github.event.pull_request.merged == true ||
             contains(steps.readbody.outputs.result, 'use') ||
