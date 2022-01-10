@@ -27,9 +27,16 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-west-1
+      #- name: validate username 
+      #  if: contains(steps.readbody.outputs.result, 'use') == false
+      #  run: exit 1
+        
       - name: validate username 
         if: contains(steps.readbody.outputs.result, 'use') == false
-        run: exit 1
+        uses: actions/github-script@v3
+        with:
+          script: |
+              missing username in pr comment
         
       - name: send message
         if: contains(steps.readbody.outputs.result, 'use')
