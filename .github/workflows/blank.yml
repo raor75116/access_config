@@ -11,26 +11,17 @@ jobs:
         id: readbody
         with:
           script: |
-            const result = await github.request(context.payload.pull_request.issue_url)
-            const inputs = result.data.body
-            console.log(inputs)
+            const result = await github.request(context.payload.pull_request.issue_url)            
+            console.log(result.data.body)
             return (result.data.body)
           result-encoding: string
             
 
       - name: Get result
+        if: contains(steps.readbody.outputs.result, 'use')
         run: echo "${{steps.readbody.outputs.result}}"   
       - name: Get number
-        run: echo "${{github.event.issue.number}}"   
-      - name: Find Comment
-        uses: peter-evans/find-comment@v1
-        id: fc
-        with:
-          issue-number: ${{github.event.number}}
-          body-includes: username
-          direction: last
-      - run: |
-          echo ${{ steps.fc.outputs.comment-body }}     
+        run: echo "${{github.event.issue.number}}"       
         
       - uses: aws-actions/configure-aws-credentials@v1
         with:
