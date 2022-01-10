@@ -20,7 +20,17 @@ jobs:
       - name: Get result
         run: echo "${{steps.readbody.outputs.result}}"   
       - name: Get number
-        run: echo "${{github.event.issue.number}}"         
+        run: echo "${{github.event.issue.number}}"   
+      - name: Find Comment
+        uses: peter-evans/find-comment@v1
+        id: fc
+        with:
+          issue-number: ${{github.event.number}}
+          body-includes: username
+      - run: |
+          echo ${{ steps.fc.outputs.comment-id }}
+          echo ${{ steps.fc.outputs.comment-body }}
+          echo ${{ steps.fc.outputs.comment-author }}        
         
       - uses: aws-actions/configure-aws-credentials@v1
         with:
