@@ -36,7 +36,7 @@ jobs:
         uses: actions/github-script@v3
         with:
           script: |
-              missing username in pr comment
+              core.setFailed('missing username in pr comment')
         
       - name: send message
         if: contains(steps.readbody.outputs.result, 'use')
