@@ -28,8 +28,8 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-west-1
       - name: validate username 
-        if: contains(steps.readbody.outputs.result, 'use') != false
-        run: echo "missing username in pr comment"
+        if: contains(steps.readbody.outputs.result, 'use') == false
+        run: exit 1
         
       - name: send message
         if: contains(steps.readbody.outputs.result, 'use')
