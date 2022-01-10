@@ -14,14 +14,11 @@ jobs:
             console.log(result.data.body)
             return (result.data.body)
           result-encoding: string
-
-      - name: Read package.json
-        id: package
-        uses: juliangruber/read-file-action@v1
-        with:
-            path: ./package.json
-      - name: Echo package.json
-        run: echo "${{ steps.package.outputs.content }}"
+      - name: read file
+        id: set_var
+        run: |
+          JSON=$(cat ./package.json)
+          echo "::set-output name=matrix::${JSON//'%'/'%25'}"
             
 
       - name: Get result
