@@ -2,13 +2,10 @@ on:
   pull_request:
     branches: [main]
     types: [opened, synchronize]
-  issue_comment:
-    branches: [main] 
-    types: [created, edited]
 jobs:
   comment:
     runs-on: ubuntu-latest
-    ##if: github.event.pull_request.merged == true
+    ##if: github.event.pull_request.opened == true
     steps:
       - uses: actions/github-script@v5
         id: readbody
@@ -35,9 +32,7 @@ jobs:
       #  run: exit 1
         
       - name: validate username 
-        if: |
-            github.event_name == 'issue_comment' ||
-            contains(fromJson('["use", "num"]'), steps.readbody.outputs.result) == false
+        if: contains(fromJson('["use", "num"]'), steps.readbody.outputs.result) == false
         uses: actions/github-script@v3
         with:
           script: |
