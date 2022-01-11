@@ -1,5 +1,6 @@
 {
-  "name": "read-file-action",
-  "time": true
+  "AwsUserName": "abc",
+  "StartTime": "123"
+  "EndTime": "1234"
 
 }
