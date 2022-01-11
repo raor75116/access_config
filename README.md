@@ -9,8 +9,5 @@ sdsdsdsd
 sdsdsdsdfdfdf
 sdsdsdwdsdsdsdsdsdsdsdsdsd
 ssdsdsdsdsdsdsdsdsdsdsdsdsdsdsaadadadhmgvhghgvhgmvsdsdsd
-sdsdwewewesdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsd
-sdsdsdsdsdsdssddwSDSDSDsdsdsdj,hgvbkuhjbsdsdsdsdsdsdsdsd
-jhbhjbj,hvbjkhbsdsdsdsdsdsddddd
 ssdsdsd
 wdewew
