@@ -15,12 +15,7 @@ jobs:
             return (result.data.body)
           result-encoding: string
           
-      - name: Read package.json
-        id: package
-        uses: juliangruber/read-file-action@v1
-        with:
-            path: package.json
-            trim: true
+
       - name: Echo package.json
         run: echo "::set-output name=some_name::$(cat package.json)"
             
