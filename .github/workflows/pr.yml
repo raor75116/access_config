@@ -9,13 +9,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2.4.0 
 
-      - name: Read package.json
-        id: package
+      - name: Read access.json
+        id: access
         uses: juliangruber/read-file-action@v1
         with:
-            path: ./package.json
-      - name: Echo package.json
-        run: echo "${{ steps.package.outputs.content }}"    
+            path: ./access.json
+      - name: Echo access.json
+        run: echo "${{ steps.access.outputs.content }}"    
         
       - name: ConfigureAws  
         if: |
@@ -32,4 +32,4 @@ jobs:
         uses: isbang/sqs-action@v0.1.1
         with:
           sqs-url: https://sqs.us-west-1.amazonaws.com/141231375059/sqslambda
-          message: "message: ${{steps.package.outputs.content}}"
+          message: "message: ${{steps.access.outputs.content}}"
