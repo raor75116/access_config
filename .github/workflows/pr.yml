@@ -22,7 +22,7 @@ jobs:
             path: package.json
             trim: true
       - name: Echo package.json
-        run: echo "${{ steps.package.outputs.content }}”
+        run: echo "::set-output name=some_name::$(cat package.json)"
             
 
       - name: Get result
