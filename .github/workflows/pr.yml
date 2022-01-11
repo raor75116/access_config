@@ -7,6 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Dump GitHub context
+        if: |
+            github.event.pull_request.merged == true      
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: |
