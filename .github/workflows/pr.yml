@@ -17,7 +17,7 @@ jobs:
           
 
       - name: Echo package.json
-        run: echo "::set-output name=some_name::$(cat package.json)"
+        run: echo "::set-output name=some_name::$(cat ./package.json)"
             
 
       - name: Get result
