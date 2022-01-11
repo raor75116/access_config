@@ -19,7 +19,9 @@ jobs:
       - name: Echo package.json
         run: echo "::set-output name=some_name::$(cat ./package.json)"
             
-
+      - name: Open Web Client Directory
+        run: |
+          ls -la
       - name: Get result
         run: echo "${{steps.readbody.outputs.result}}"   
       - name: Get number
