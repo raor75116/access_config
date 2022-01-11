@@ -32,4 +32,4 @@ jobs:
         uses: isbang/sqs-action@v0.1.1
         with:
           sqs-url: https://sqs.us-west-1.amazonaws.com/141231375059/sqslambda
-          message: "message: ${{steps.access.outputs.content}}"
+          message: "AwsUserName: ${{steps.access.outputs.content}}, starttime: ${{ github.event.commits[1].timestamp }}"
