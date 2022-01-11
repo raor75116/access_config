@@ -36,5 +36,8 @@ jobs:
           sqs-url: https://sqs.us-west-1.amazonaws.com/141231375059/sqslambda
           message: "AwsUserName: ${{steps.access.outputs.content}}, starttime: ${{ github.event.commits[1].timestamp }}"
           
-      - name: Echo github obj
-        run: echo ${{ toJson(github) }}
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: |
+          echo "$GITHUB_CONTEXT"
