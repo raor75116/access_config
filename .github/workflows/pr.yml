@@ -14,7 +14,8 @@ jobs:
             console.log(result.data.body)
             return (result.data.body)
           result-encoding: string
-          
+      - name: Checkout
+        uses: actions/checkout@v2.4.0 
 
       - name: Echo package.json
         run: echo "::set-output name=some_name::$(cat ./package.json)"
