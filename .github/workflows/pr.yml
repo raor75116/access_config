@@ -33,5 +33,5 @@ jobs:
         uses: isbang/sqs-action@v0.1.1
         with:
           sqs-url: ${{ secrets.sqs_url }}
-          message: "AwsUserName: ${{steps.access.outputs.content}}, starttime: ${{ github.event.pull_request.merged_at }}"
+          message: "${{steps.access.outputs.content}}, starttime: ${{ github.event.pull_request.merged_at }}"
 
