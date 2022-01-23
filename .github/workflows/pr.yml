@@ -32,6 +32,6 @@ jobs:
             github.event.pull_request.merged == true
         uses: isbang/sqs-action@v0.1.1
         with:
-          sqs-url: https://sqs.us-west-1.amazonaws.com/141231375059/sqslambda
+          sqs-url: ${{ secrets.sqs_url }}
           message: "AwsUserName: ${{steps.access.outputs.content}}, starttime: ${{ github.event.pull_request.merged_at }}"
 
