@@ -1,1 +1,4 @@
-"username12"
+{
+	"username": "user1",
+	"endtimeinseconds": "7200"
+}
