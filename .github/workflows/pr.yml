@@ -16,7 +16,8 @@ jobs:
         with:
             path: ./access.json
       - name: Echo access.json
-        run: echo "${{ steps.access.outputs.content }}"    
+        #run: echo "${{ steps.access.outputs.content }}"   
+        run: echo "${{fromJson(steps.set_var.outputs.packageJson).username}}"
         
       - name: ConfigureAws  
         if: |
@@ -27,11 +28,11 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-west-1
         
-      - name: send message 
-        if: |
-            github.event.pull_request.merged == true
-        uses: isbang/sqs-action@v0.1.1
-        with:
-          sqs-url: ${{ secrets.sqs_url }}
+      #- name: send message 
+      #  if: |
+      #      github.event.pull_request.merged == true
+      #  uses: isbang/sqs-action@v0.1.1
+      #  with:
+      #    sqs-url: ${{ secrets.sqs_url }}
           #message: "${{steps.access.outputs.content}}, starttime: ${{ github.event.pull_request.merged_at }}"
-          message: "${{steps.access.outputs.content}}"
+      #    message: "${{steps.access.outputs.content}}"
