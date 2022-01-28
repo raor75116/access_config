@@ -17,7 +17,7 @@ jobs:
             path: ./access.json
       - name: Echo access.json
         #run: echo "${{ steps.access.outputs.content }}"   
-        run: echo "${{fromJson(steps.set_var.outputs.packageJson).username}}"
+        run: echo "${{fromJson(steps.access.outputs.content).username}}"
         
       - name: ConfigureAws  
         if: |
